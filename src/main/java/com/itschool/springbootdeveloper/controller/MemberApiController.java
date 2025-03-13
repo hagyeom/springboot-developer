@@ -5,14 +5,9 @@ import com.itschool.springbootdeveloper.domain.Member;
 import com.itschool.springbootdeveloper.network.request.MemberRequest;
 import com.itschool.springbootdeveloper.network.response.MemberResponse;
 import com.itschool.springbootdeveloper.service.MemberService;
-import com.itschool.springbootdeveloper.service.base.CrudService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 // Presentation 계층 : 웹 클라이언트의 요청 및 응답을 처리
 // RESTController(REST API, json) 또는 Controller 어노테이션은 라우터 역할을 함
@@ -22,8 +17,12 @@ import java.util.List;
 @RequestMapping("/api/member")
 public class MemberApiController extends CrudController<MemberRequest, MemberResponse, Member> {
     @Autowired
-    public MemberApiController(CrudService<MemberRequest, MemberResponse, Member> baseService) { // MemberService
+    public MemberApiController(MemberService baseService) { // MemberService
         super(baseService);
     }
-    // 프레젠테이션 계층
+
+    @Override
+    protected MemberService getBaseService() {
+        return (MemberService) baseService;
+    }
 }

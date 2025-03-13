@@ -30,4 +30,9 @@ public class MemberService extends CrudService<MemberRequest, MemberResponse, Me
     protected MemberResponse response(Member entity) {
         return new MemberResponse(entity);
     }
+
+    @Override
+    protected MemberRepository getBaseRepository() {
+        return (MemberRepository) baseRepository;
+    }
 }

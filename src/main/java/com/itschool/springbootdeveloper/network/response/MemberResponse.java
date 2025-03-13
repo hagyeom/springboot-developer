@@ -11,6 +11,7 @@ public class MemberResponse {
     private Long id;
 
     private String name;
+    
 
     public MemberResponse(Member member) {
         this.id = member.getId();
