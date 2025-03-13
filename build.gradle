@@ -47,7 +47,7 @@ dependencies {
     // 이외에도 자주 사용되는 스타터 : data-jpa(ORM, JPA를 더 쉽게 사용하기 위한 의존성,
     // validation(유효성 검사), actuator(모니터링용))
 }
-
+// Gradle에서 JUnit 5 (JUnit Jupiter) 테스트를 실행하도록 설정하는 코드
 test {
     useJUnitPlatform()
 }
